@@ -1,0 +1,54 @@
+.navbar{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:20px 0;
+}
+.navbar-menu{
+    list-style-type: none;
+    display:flex;
+    gap:20px;
+    color:#49557e;
+    justify-content: center;
+    align-items: center;
+    cursor:pointer;
+}
+.navbar-right{
+    display:flex;
+    align-items:center;
+    gap:40px;
+}
+.navbar .loge{
+    width:150px;
+}
+.navbar button{
+    background:transparent;
+    font-size:16px;
+    color:#49557e;
+    border:1px solid tomato;
+    padding:10px 30px;
+    border-radius:50px;
+    cursor:pointer;
+    transition:background-color 0.3s;
+}
+.navbar button:hover{
+    background-color:#fff4f2;
+}
+.navbar .navbar-menu .active{
+    padding-bottom:2px;
+    border-bottom:2px solid #49557e;
+    
+}
+.navbar-search-icon{
+    position:relative;
+}
+.navbar-search-icon .dot{
+    position:absolute;
+    width:10px;
+    height:10px;
+    background-color:tomato;
+    border-radius:5px;
+    top:-8px;
+    right:-8px;
+}
+
