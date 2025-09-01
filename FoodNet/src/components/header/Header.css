@@ -7,6 +7,17 @@
     position:relative;
     
 }
+@keyframes fadeIn{
+    0% {
+        opacity:0;
+    }
+    50%{
+        
+    }
+    100% {
+        opacity:1;
+    }
+}
 .header-contents{
     position:absolute;
     display:flex;
@@ -16,6 +27,8 @@
     max-width:50%;
     bottom:10%;
     left:6vw;
+    animation-name:fadeIn;
+    animation-duration:2s;
 }
 .header-contents h2{
     font-weight:500;
