@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Menu.css'
 import { menu_list } from '../../assets/assets.js'
+import { StoreContext } from '../../context/storeContext.jsx'
 
 const Menu = ({category, setCategory}) => {
     return (

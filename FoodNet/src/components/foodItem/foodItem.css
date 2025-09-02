@@ -1,0 +1,16 @@
+.food-item-image{
+    width:100%;
+    border-radius:10% 10% 0 0;
+
+}
+.food-item{
+    width:230px;
+    margin:15px 0px;
+}
+.food-item-name-rating{
+    display:flex;
+    justify-content: space-between;
+}
+.food-item-info{
+    
+}
