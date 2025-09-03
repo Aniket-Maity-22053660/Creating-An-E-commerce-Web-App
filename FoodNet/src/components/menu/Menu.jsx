@@ -4,6 +4,7 @@ import { menu_list } from '../../assets/assets.js'
 import { StoreContext } from '../../context/storeContext.jsx'
 
 const Menu = ({category, setCategory}) => {
+
     return (
         <div className='explore-menu' id='explore-menu'>
             <h1>Explore our menu</h1>
@@ -20,7 +21,7 @@ const Menu = ({category, setCategory}) => {
                  )
                 }
             </div>
-            <hr />
+          <hr />
         </div>
     )
 }
