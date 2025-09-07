@@ -47,6 +47,8 @@
     border-radius:4px;
 border:1px solid #808080;
 cursor:pointer;
+   background-color:tomato;
+   color:white;
 }
 .login-popup-condition{
     display:flex;
