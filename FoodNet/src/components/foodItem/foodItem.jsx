@@ -4,7 +4,7 @@ import { assets } from '../../assets/assets.js'
 import {StoreContext} from '../../context/storeContext.jsx'
 
 const FoodItem = ({id, name, description, image, price}) =>{
-    const [itemCount, setItemCount] = useState(0)
+    //const [itemCount, setItemCount] = useState(0)
     const {cartItems, setCartItems, addCartItems, removeCartItems} = useContext(StoreContext)
 
     return(

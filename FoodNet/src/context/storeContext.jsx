@@ -17,6 +17,9 @@ const StoreContextProvider = (props) => {
     const removeCartItems = (itemId)=>{
         setCartItems((prev)=>({...prev, [itemId] : prev[itemId] - 1}))
     }
+    const emptyCartItems = (itemId)=>{
+        setCartItems((prev)=>({...prev, [itemId]: 0}))
+    }
     useEffect(()=>{
         console.log(cartItems)
     }, [cartItems])
@@ -26,6 +29,7 @@ const StoreContextProvider = (props) => {
         setCartItems, 
         addCartItems, 
         removeCartItems,
+        emptyCartItems
     }
     return (
         <StoreContext.Provider value={contextValue}>
