@@ -1,12 +1,15 @@
 import React, {useContext, useState} from 'react'
 import './Cart.css'
 import {StoreContext} from '../../context/storeContext.jsx'
+import { useNavigate } from 'react-router-dom'
 
 const Cart = ()=>{
-    const {cartItems, food_list, removeCartItems, emptyCartItems } = useContext(StoreContext)
+    const {cartItems, food_list, removeCartItems, emptyCartItems, total, setTotal } = useContext(StoreContext)
 
-    let total = 0;
+    let totalPrice = 0;
     let delivery = 2;
+
+    const navigate = useNavigate()
 
     return(
         <div className='cart'>
@@ -25,7 +28,7 @@ const Cart = ()=>{
             {
                 food_list.map((item, index)=>{
                     if(cartItems[item._id] > 0){
-                        total += cartItems[item._id] * item.price
+                        totalPrice += cartItems[item._id] * item.price
                         return(
                             <>
                             <div className='cart-items-title cart-items-item cart-item-resolution'>
@@ -53,19 +56,19 @@ const Cart = ()=>{
                     <div className='cart-invoice'>
                         <div className="card-total-detail">
                             <p>Subtotal</p>
-                            <p>${total}</p>
+                            <p>${totalPrice}</p>
                         </div>
                         <hr />
                         <div className="card-total-detail">
                             <p>Delivery Fee</p>
-                            <p>${total ? 2 : 0}</p>
+                            <p>${totalPrice ? 2 : 0}</p>
                         </div>
                         <hr />
                         <div className="card-total-detail">
                             <b>Total</b>
-                            <b>${total ? 2 + total : 0}</b>
+                            <b>${totalPrice ? 2 + totalPrice : 0}</b>
                         </div>
-                        <button>PROCEED TO CHECK OUT</button>
+                        <button onClick={()=>{setTotal(totalPrice); navigate('/place-order')}}>PROCEED TO CHECK OUT</button>
                     </div>
                     <div className='cart-promocode'>
                         <div className='cart-promocode-contents'>

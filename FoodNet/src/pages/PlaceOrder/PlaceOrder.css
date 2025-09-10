@@ -1,0 +1,66 @@
+.place-order{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:100px;
+    margin-top:100px;
+    padding:0px 80px;
+}
+
+.place-order-right{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    justify-content:center;
+    align-items:flex-start;
+    border:1px solid blacki;
+    flex-basis:350px;
+}
+
+.card-total-detail{
+    display:flex;
+    justify-content:space-between;
+    color:#555;
+}
+
+.cart-invoice button{
+    border:none;
+    color:white;
+    background-color:tomato;
+    width:max(15vw, 200px);
+    padding:12px 0px;
+    border-radius:4px;
+    cursor:pointer;
+    width:100%;
+    
+}
+.cart-invoice{
+    display:flex;
+    flex-direction:column;
+    gap:0.6vw;
+    width:100%;
+    
+}
+.cart-invoice button{
+    margin-top:10px;
+
+}
+.place-order-left .title{
+    font-size:30px;
+    font-weight:600;
+    margin-bottom:30px;
+
+}
+.place-order-left input{
+    margin-bottom:15px;
+    width:100%;
+    padding:10px;
+    border:1px solid #c5c5c5;
+    border-radius:4px;
+    outline-color:tomato;
+}
+.place-order-left .multi-fields{
+    display:flex;
+    gap:10px;
+    width:100%;
+}
