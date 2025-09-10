@@ -10,7 +10,7 @@ export const addFood = async (req, res) => {
         price : req.body.price,
         category : req.body.category,
         image : image_filename
-    })
+    }) 
 
 
     try{
@@ -22,4 +22,26 @@ export const addFood = async (req, res) => {
     }
 
 
+}
+
+export const listFood = async (req, res)=>{
+    try{
+        const foods  = await foodModel.find({})
+        res.json({success:true, data:foods})
+    }catch(e){
+        console.log(e)
+        res.json({success:false, message:"Error"})
+    }
+}
+
+export const removeFood = async (req, res) =>{
+    try{
+        const food = await foodModel.findById(req.body.id)
+        fs.unlink(`uploads/${food.image}`, ()=>{})
+        await foodModel.findByIdAndDelete(req.body.id)
+        res.json({success:true, message:"Food item deleted!"})
+    }catch(e){
+        console.log(e)
+        res.json({success:false, message:"Error!"})
+    }
 }
