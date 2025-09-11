@@ -23,3 +23,29 @@
 .add-img-upload img{
     max-width:120px;
 }
+.add-product-name input, .add-product-description textarea{
+    width:max(40%, 280px);
+    padding:10px;
+}
+.add-category-price{
+    display:flex;
+    gap:30px;
+    width:max(40%, 280px);
+    justify-content:space-between;
+    
+}
+.add-category, .add-price{
+    width:50%;
+}
+.add-category-price select, .add-category-price input{
+    padding:10px;
+    font-size:13.5px;
+}
+.add-button{
+    width:17.9%;
+    padding:10px;
+    border:none;
+    background-color:black;
+    color:white;
+    cursor:pointer;
+}
