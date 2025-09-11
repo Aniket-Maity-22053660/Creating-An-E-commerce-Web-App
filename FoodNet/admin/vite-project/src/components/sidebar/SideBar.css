@@ -30,3 +30,14 @@
         display:none;
     }
 }
+.selected{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    border: 2px solid tomato;
+    border-right:0;
+    padding:8px 10px;
+    border-radius:3px 0px 0px 3px;
+    cursor:pointer;
+
+}
