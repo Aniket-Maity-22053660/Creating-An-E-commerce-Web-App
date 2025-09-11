@@ -1,0 +1,25 @@
+.add{
+    width:71vw;
+    margin-left:max(5vw, 25px);
+    margin-top:50px;
+    color:#6d6d6d;
+    font-size:16px;
+    border:1px solid blacki;
+}
+
+
+.add form{
+    border:1px solid blacki;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+.flex-col{
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    gap:5px;
+}
+.add-img-upload img{
+    max-width:120px;
+}
