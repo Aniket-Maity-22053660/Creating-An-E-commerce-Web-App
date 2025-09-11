@@ -16,7 +16,7 @@ const App = ()=>{
     <hr />
     <div className='app-content'>
       <SideBar/>
-      <div style={{display:"flex",justifyContent:"center", width:"100vw",height:"100vh",  alignItems:"center"}}>
+      <div>
       <Routes>
         <Route path='/add' element={<Add />}/>
         <Route path='/list' element={<List />}/>

@@ -11,7 +11,7 @@ const SideBar = ()=>{
             <div className='sidebar-options'>
                 <NavLink to='/add' className={selected['add'] ? 'selected' : 'sidebar-option'} onClick={()=>setSelected((prev)=>(!prev['add'] ? {['list']:false,['order']:false, ['add'] : true} : {...prev, ['add'] : false}))}>
                     <img src={assets.add_icon} alt=''/>
-                    <p>Add Icons</p>
+                    <p>Add Items</p>
                 </NavLink>
                 <NavLink to='/list'className={selected['list'] ? 'selected' : 'sidebar-option'} onClick={()=>(setSelected((prev)=>(!prev['list'] ? {['order']:false,['add']:false, ['list'] : true} : {...prev, ['list']:false})))}>
                     <img src={assets.order_icon} alt=''/>
