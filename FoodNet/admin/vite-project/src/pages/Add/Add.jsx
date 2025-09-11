@@ -1,25 +1,48 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { assets } from '../../assets/assets.js'
 import './Add.css'
 
 const Add = ()=>{
+    const [image, setImage] = useState(false)   
+
+    useEffect(()=>{
+        console.log(image)
+    }, [image])
+
+    const [data, setData] = useState({
+        name:"",
+        description:"",
+        price:"",
+        category:"Salad"
+    })
+
+    useEffect(()=>{
+        console.log(data)
+    }, [data])
+    const onChangeHandler = (event)=>{
+        console.log(event)
+        const name = event.target.name
+        const value = event.target.value
+        //setImage((prev)=>{return {...prev, [name] : value}})
+        setData((prev)=>{return {...prev, [name]:value}})
+    }
     return(
         <div className='add'>
             <form >
                 <div className='add-img-upload flex-col'>
                     <p>Upload Image</p>
                     <label htmlFor='picture'>
-                        <img src={assets.upload_area} alt=''/>
+                        <img src={image ? URL.createObjectURL(image):assets.upload_area} alt=''/>
                     </label>
-                    <input type='file' id='picture' name='picture' hidden required/>
+                    <input type='file' onChange={(e)=>setImage(e.target.files[0])} id='picture' name='picture' hidden required/>
                 </div>
                 <div className='add-product-name flex-col'>
                     <p>Product Name</p>
-                    <input type='text' name='name' placeholder='Type Here' />
+                    <input onChange={(e)=>onChangeHandler(e)} type='text' name='name' placeholder='Type Here' />
                 </div>
                 <div className='add-product-description flex-col'>
                     <p>Product Description</p>
-                    <textarea name='description' row='6' placeholder='Write Content Here' required>
+                    <textarea name='description' rows='6' placeholder='Write Content Here' required>
 
                     </textarea>
                 </div>
@@ -39,7 +62,7 @@ const Add = ()=>{
                     </div>
                     <div className='add-price flex-col'>
                         <p>Product Price</p>
-                        <input type='Number' name='price' placeholder='$20' />
+                        <input type='number' name='price' placeholder='$20' />
                     </div>
                 </div>
                 <button type='submit' className='add-button flex-col'>ADD</button>
