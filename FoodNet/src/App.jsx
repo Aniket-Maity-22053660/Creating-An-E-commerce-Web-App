@@ -7,6 +7,8 @@ import Cart from './pages/Cart/Cart.jsx'
 import PlaceOrder from './pages/PlaceOrder/PlaceOrder.jsx'
 import Footer from './components/footer/Footer.jsx'
 import LoginPopUp from './components/loginPopUp/LoginPopUp.jsx'
+import {ToastContainer} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false)
@@ -18,6 +20,13 @@ const App = () => {
   return(
      
     <>
+    <ToastContainer
+    position="top-center"
+  autoClose={3000}
+  newestOnTop
+  theme="colored"
+  style={{ zIndex: 999999 }} 
+    />
     {showLogin ? <LoginPopUp setShowLogin={setShowLogin}/> : <></>}
     <div className='App'>
       <Navbar setShowLogin={setShowLogin}/>
