@@ -1,10 +1,10 @@
 .add{
     width:71vw;
-    margin-left:max(5vw, 25px);
+    margin-left: 5.4vw;
     margin-top:50px;
     color:#6d6d6d;
     font-size:16px;
-    border:1px solid blacki;
+    
 }
 
 
@@ -19,6 +19,7 @@
     flex-direction:column;
     align-items:stretch;
     gap:5px;
+    justify-content:center;
 }
 .add-img-upload img{
     max-width:120px;
