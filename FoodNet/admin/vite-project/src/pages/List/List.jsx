@@ -18,12 +18,25 @@ const List = ()=>{
         }
     }
 
+    const deleteItem = async (id)=>{
+        const url = 'http://localhost:4000/api/food/'
+        const response = await axios.post(`${url}remove`, {id:id})
+        if(response.data.success){
+            toast.success(response.data.message)
+            setTimeout(()=>window.location.reload(), 5000)
+        }else{
+            toast.error(response.data.message)
+        }
+    }
+
     useEffect(()=>{
         fetchList()
     }, [])
     return (
+        
         <div className='list add flex-col'>
-            <p>All Foods List</p>
+            <p className='header'>All Foods List</p>
+            
             <div className='list-table'>
                 <div className='list-table-format title'>
                     <b>Image</b>
@@ -32,6 +45,7 @@ const List = ()=>{
                     <b>Price</b>
                     <b>Action</b>
                 </div>
+                <div className='list-table-container'>
                 {list.map((item, index)=>{
                     return(
                         <div key={index} className='list-table-format'>
@@ -39,12 +53,14 @@ const List = ()=>{
                             <p>{item.name}</p>
                             <p>{item.category}</p>
                             <p>${item.price}</p>
-                            <p>x</p>
+                            <p onClick={()=>deleteItem(item._id)} style={{cursor:'pointer'}}>X</p>
                         </div>
                     )
                 })}
+                </div>
             </div>
         </div>
+    
     )
 }
 

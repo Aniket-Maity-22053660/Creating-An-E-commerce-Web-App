@@ -18,7 +18,9 @@ const App = ()=>{
     <NavBar />
     <hr />
     <div className='app-content'>
+      
       <SideBar/>
+      
       <div>
       <Routes>
         <Route path='/add' element={<Add />}/>

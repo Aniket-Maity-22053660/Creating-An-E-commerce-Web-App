@@ -11,7 +11,39 @@
 }
 .title{
     background-color:#f9f9f9;
+    font-size:18px;
+    text-align:center;
+    
 }
 .list-table-format img{
     width:50px;
+}
+.list{
+    height:70vh;
+    display:flex;
+    
+}
+.list-table{
+    height:70vh;
+    
+    position:relative;
+}
+.list-table-container{
+    overflow-y:auto;
+    height:62.5vh;
+    border-bottom:1px solid #cacaca;
+}
+.list-table-container::-webkit-scrollbar{
+    display:none;
+}
+.header{
+    font-size:larger;
+    font-weight:18px;
+    margin-bottom: 10px;
+    border:1px solid blacki;
+    text-align:center;
+    
+}
+.list-table-format p{
+    font-size:16px;
 }
