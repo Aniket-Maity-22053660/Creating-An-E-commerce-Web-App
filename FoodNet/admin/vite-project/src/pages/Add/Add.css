@@ -45,10 +45,11 @@
     outline:0px;
 }
 .add-button{
-    width:17.9%;
-    padding:10px;
+    width:max(40%, 280px);
+    padding:13px;
     border:none;
     background-color:black;
     color:white;
     cursor:pointer;
+    border-radius:5px;
 }

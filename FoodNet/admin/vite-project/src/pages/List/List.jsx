@@ -23,7 +23,7 @@ const List = ()=>{
         const response = await axios.post(`${url}remove`, {id:id})
         if(response.data.success){
             toast.success(response.data.message)
-            setTimeout(()=>window.location.reload(), 5000)
+            setTimeout(async ()=>await fetchList(), 5000)
         }else{
             toast.error(response.data.message)
         }

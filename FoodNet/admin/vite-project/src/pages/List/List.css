@@ -31,13 +31,13 @@
 .list-table-container{
     overflow-y:auto;
     height:62.5vh;
-    border-bottom:1px solid #cacaca;
+    border-bottom:1px solid #cacacai;
 }
 .list-table-container::-webkit-scrollbar{
     display:none;
 }
 .header{
-    font-size:larger;
+    font-size:25px;
     font-weight:18px;
     margin-bottom: 10px;
     border:1px solid blacki;
@@ -46,4 +46,14 @@
 }
 .list-table-format p{
     font-size:16px;
+}
+
+@media (max-width:600px){
+    .list-table-format{
+        grid-template-columns:1fr 3fr 1fr;
+        gap:15px;
+    }
+    .title{
+        display:none;
+    }
 }
