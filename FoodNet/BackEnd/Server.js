@@ -1,7 +1,9 @@
+import "dotenv/config"
 import express from 'express'
 import cors from 'cors'
 import { connectDB } from "./config/db.js"
 import foodRouter from "./routes/foodRoute.js"
+import userRouter from "./routes/userRoute.js"
 //Configuring the app
 
 const app = express()
@@ -18,6 +20,7 @@ connectDB()
 
 // APPI endpoint
 app.use('/api/food', foodRouter)
+app.use('/api/user', userRouter)
 
 app.get('/', (req, res)=>{
     res.send("You are seeing this from the BackEnd")

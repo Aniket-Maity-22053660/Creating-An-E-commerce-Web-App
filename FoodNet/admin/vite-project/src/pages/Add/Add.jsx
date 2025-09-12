@@ -94,7 +94,9 @@ const Add = ()=>{
                         <input value={data.price} onChange={(e)=>onChangeHandler(e)} type='number' name='price' placeholder='$20' />
                     </div>
                 </div>
+                <div style={{display:'flex'}}>
                 <button type='submit' className='add-button flex-col'>ADD</button>
+                </div>
             </form>
         </div>
     )
