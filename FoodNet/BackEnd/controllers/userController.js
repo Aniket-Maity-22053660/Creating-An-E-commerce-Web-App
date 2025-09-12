@@ -5,7 +5,30 @@ import validator from 'validator'
 
 
 const loginUser = async (req, res)=>{
+    
+    try{
+        const {email, password} = req.body
+        console.log(req.body)
+        if (!email || !password) {
+            return res.status(400).json({ success: false, message: 'Email and password are required' })
+        }
+        const user = await userModel.findOne({email})
 
+        if(!user){
+            res.json({success:false, message:"User does not exist!"})
+        }else{
+            const isMatch = await bcrypt.compare(password, user.password)
+            if(!isMatch){
+                res.json({success:false, message:"Invalid credentials!"})
+            }else{
+                const token = createToken(user._id)
+                res.json({success:true, token:token, message:"Logged In Successfully!"})
+            }
+        }
+    }catch(e){
+        console.log(e)
+        res.json({success:false, message:"Error!"})
+    }
 }
 
 const createToken = (id)=>{
@@ -16,7 +39,7 @@ const registerUser = async (req, res)=>{
     const name = req.body.name
     const email = req.body.email
     const password = req.body.password
-    
+
     const exists = await userModel.findOne({email})
     try{
     if(exists){
@@ -38,12 +61,12 @@ const registerUser = async (req, res)=>{
             })
             const user = await newUser.save()
             const token = createToken(user._id)
-            res.json({success:true, token})
+            res.json({success:true, token, message:"Signed In Successfully!"})
         }
     }
     }catch(error){
         console.log(error)
-        res.send({success:false, message:"Error!"})
+        res.json({success:false, message:"Error!"})
     }
 }
 

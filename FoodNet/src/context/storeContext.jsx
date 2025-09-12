@@ -20,6 +20,8 @@ const StoreContextProvider = (props) => {
     const emptyCartItems = (itemId)=>{
         setCartItems((prev)=>({...prev, [itemId]: 0}))
     }
+    const url = "http://localhost:4000/api"
+    const [token, setToken] = useState("")
     useEffect(()=>{
         console.log(cartItems)
     }, [cartItems])
@@ -31,7 +33,10 @@ const StoreContextProvider = (props) => {
         removeCartItems,
         emptyCartItems,
         total,
-        setTotal
+        setTotal,
+        url,
+        token,
+        setToken
     }
     return (
         <StoreContext.Provider value={contextValue}>
