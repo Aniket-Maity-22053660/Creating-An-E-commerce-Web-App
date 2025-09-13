@@ -4,6 +4,8 @@ import cors from 'cors'
 import { connectDB } from "./config/db.js"
 import foodRouter from "./routes/foodRoute.js"
 import userRouter from "./routes/userRoute.js"
+import cartRouter from './routes/cartRoute.js'
+
 //Configuring the app
 
 const app = express()
@@ -21,6 +23,7 @@ connectDB()
 // APPI endpoint
 app.use('/api/food', foodRouter)
 app.use('/api/user', userRouter)
+app.use('/api/cart', cartRouter)
 
 app.get('/', (req, res)=>{
     res.send("You are seeing this from the BackEnd")
