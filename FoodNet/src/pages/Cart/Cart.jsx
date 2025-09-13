@@ -31,7 +31,7 @@ const Cart = ()=>{
                         totalPrice += cartItems[item._id] * item.price
                         return(
                             <>
-                            <div className='cart-items-title cart-items-item cart-item-resolution'>
+                            <div key={index} className='cart-items-title cart-items-item cart-item-resolution'>
                                 <img src={`http://localhost:4000/image/${item.image}`} alt='' />
                                 <p>{item.name}</p>
                                 <p>${item.price}</p>

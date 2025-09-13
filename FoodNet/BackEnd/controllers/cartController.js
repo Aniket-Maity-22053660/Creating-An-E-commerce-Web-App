@@ -10,7 +10,12 @@ const addToCart = async (req, res)=>{
     }else{
         cartData[req.body.itemId] += 1;
     }
-    await userModel.findByIdAndUpdate(req.userId, {cartData})
+   await userModel.updateOne(
+  { _id: req.userId },
+  { $inc: { [`cartData.${String(req.body.itemId)}`]: 1 } }
+)
+
+    console.log(req)
     return res.json({success:true, message:"Added To Cart!"})
     }catch(e){
         console.log(e)
@@ -18,12 +23,38 @@ const addToCart = async (req, res)=>{
     }
 }
 
-const removeFromCart = (req, res)=>{
-    
+const removeFromCart = async (req, res)=>{
+    try{
+    let userData = await userModel.findById(req.userId)
+    let cartData = await userData.cartData
+
+if (cartData[req.body.itemId] > 0) {
+  // decrement by 1
+    cartData[req.body.itemId] -= 1
+    await userModel.findByIdAndUpdate(req.body.itemId, {cartData})
+} else {
+  return res.json({ success: false, message: "Item not found!" });
 }
 
-const listCart = (req, res)=>{
+    }catch(e){
+        console.log(e)
+        return res.json({success:false, message:"Error!"})
+    }
+}
 
+const listCart = async (req, res)=>{
+    try{
+        let userData = await userModel.findById(req.userId)
+        let cartData = await userData.cartData
+        if(cartData){
+            return res.json({success:true, cartData})
+        }else{
+            return res.json({success:false, message:"No items were found!"})
+        }
+    }catch(e){
+        console.log(e)
+        return res.json({success:false, message:"Error!"})
+    }
 }
 
 export {addToCart, removeFromCart, listCart}
