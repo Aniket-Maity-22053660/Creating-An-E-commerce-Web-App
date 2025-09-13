@@ -105,3 +105,41 @@
         opacity:100%;
     }
 }
+.nav-bar-profile{
+    position:relative;
+    cursor:pointer;
+    border:1px solid blacki;
+}
+.nav-profile-dropdown{
+    position:absolute;
+    display:none;
+    right:0;
+    z-index:1;
+    animation:fadeIn 0.5s;
+}
+.nav-bar-profile:hover .nav-profile-dropdown{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    background-color:#fff2ef;
+    padding:12px 25px;
+    border-radius:4px;
+    border:1px solid tomato;
+    outline:2px solid white;
+    list-style-type:none;
+   
+
+    
+}
+.nav-bar-profile ul li{
+    display:flex;
+    gap:10px;
+    cursor:pointer;
+    align-items:center;
+}
+.nav-profile-dropdown img{
+    width:20px;
+}
+.nav-profile-dropdown li:hover{
+    color:tomato;
+}
