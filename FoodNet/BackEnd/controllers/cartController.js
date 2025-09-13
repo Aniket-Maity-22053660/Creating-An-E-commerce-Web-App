@@ -10,10 +10,7 @@ const addToCart = async (req, res)=>{
     }else{
         cartData[req.body.itemId] += 1;
     }
-   await userModel.updateOne(
-  { _id: req.userId },
-  { $inc: { [`cartData.${String(req.body.itemId)}`]: 1 } }
-)
+    await userModel.findByIdAndUpdate(req.userId, {cartData})
 
     console.log(req)
     return res.json({success:true, message:"Added To Cart!"})
@@ -31,7 +28,7 @@ const removeFromCart = async (req, res)=>{
 if (cartData[req.body.itemId] > 0) {
   // decrement by 1
     cartData[req.body.itemId] -= 1
-    await userModel.findByIdAndUpdate(req.body.itemId, {cartData})
+    await userModel.findByIdAndUpdate(req.userId, {cartData})
 } else {
   return res.json({ success: false, message: "Item not found!" });
 }
