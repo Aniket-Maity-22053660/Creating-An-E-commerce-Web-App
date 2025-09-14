@@ -13,11 +13,11 @@ const SideBar = ()=>{
                     <img src={assets.add_icon} alt=''/>
                     <p>Add Items</p>
                 </NavLink>
-                <NavLink to='/list'className={selected['list'] ? 'selected' : 'sidebar-option'} onClick={()=>{setSelected({['list']:false,['order']:false, ['add'] : true})}}>
+                <NavLink to='/list'className={selected['list'] ? 'selected' : 'sidebar-option'} onClick={()=>{setSelected({['list']:true,['order']:false, ['add'] : false})}}>
                     <img src={assets.order_icon} alt=''/>
                     <p>List Items</p>
                 </NavLink>
-                <NavLink to='/order'className={selected['order'] ? 'selected' : 'sidebar-option'} onClick={()=>{setSelected({['list']:false,['order']:false, ['add'] : true})}}>
+                <NavLink to='/order'className={selected['order'] ? 'selected' : 'sidebar-option'} onClick={()=>{setSelected({['list']:false,['order']:true, ['add'] : false})}}>
                     <img src={assets.order_icon} alt=''/>
                     <p>Order Items</p>
                 </NavLink>

@@ -54,4 +54,20 @@ const placeOrder = async(req,  res)=>{
     }
 }
 
-export { placeOrder }
+const verifyOrder = async (req, res)=>{
+    const {orderId, success} = req.body
+    console.log(req.body)
+    try{
+        if(success == "true"){
+            await orderModel.findByIdAndUpdate(orderId, {success:true})
+            return res.json({success:true})
+        }else{
+            await orderModel.findByIdAndDelete(orderId, {success:false})
+            return res.json({success:false})
+        }
+    }catch(e){
+        console.log(e)
+    }
+}
+
+export { placeOrder, verifyOrder }

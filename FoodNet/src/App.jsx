@@ -5,6 +5,7 @@ import {Routes, Route} from 'react-router-dom'
 import Home from './pages/Home/Home.jsx'
 import Cart from './pages/Cart/Cart.jsx'
 import PlaceOrder from './pages/PlaceOrder/PlaceOrder.jsx'
+import VerifyPayment from './pages/Verify/Verify.jsx'
 import Footer from './components/footer/Footer.jsx'
 import LoginPopUp from './components/loginPopUp/LoginPopUp.jsx'
 import {ToastContainer} from 'react-toastify'
@@ -34,6 +35,7 @@ const App = () => {
         <Route path='/' element = { <Home /> }/>
         <Route path='/cart' element = { <Cart /> }/>
         <Route path='/place-order' element = { <PlaceOrder /> }/>
+        <Route path='/verify' element={<VerifyPayment />} />
       </Routes>
     </div>
     <Footer />
