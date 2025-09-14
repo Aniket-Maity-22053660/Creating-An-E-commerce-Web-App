@@ -2,12 +2,14 @@ import React, {useContext, useState} from 'react'
 import './Cart.css'
 import {StoreContext} from '../../context/storeContext.jsx'
 import { useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
 
 const Cart = ()=>{
-    const {cartItems, food_list, removeCartItems, emptyCartItems, total, setTotal, url } = useContext(StoreContext)
+    const {cartItems, food_list, removeCartItems, emptyCartItems, token, total, setTotal, url } = useContext(StoreContext)
 
     let totalPrice = 0;
     let delivery = 2;
+   
 
     const navigate = useNavigate()
 
@@ -28,7 +30,7 @@ const Cart = ()=>{
             {
                 food_list.map((item, index)=>{
                     if(cartItems[item._id] > 0){
-                        totalPrice += cartItems[item._id] * item.price
+                        
                         return(
                             <>
                             <div key={index} className='cart-items-title cart-items-item cart-item-resolution'>
@@ -37,7 +39,7 @@ const Cart = ()=>{
                                 <p>${item.price}</p>
                                 <p>{cartItems[item._id]}</p>
                                 <p>${item.price * cartItems[item._id]}</p>
-                                <p onClick={()=>emptyCartItems(item._id)} style={{cursor:'pointer'}}>x</p>
+                                <p onClick={()=>removeCartItems(item._id, true)} style={{cursor:'pointer'}}>x</p>
                             </div>
                             <hr/>
                             </>
@@ -56,19 +58,19 @@ const Cart = ()=>{
                     <div className='cart-invoice'>
                         <div className="card-total-detail">
                             <p>Subtotal</p>
-                            <p>${totalPrice}</p>
+                            <p>${total}</p>
                         </div>
                         <hr />
                         <div className="card-total-detail">
                             <p>Delivery Fee</p>
-                            <p>${totalPrice ? 2 : 0}</p>
+                            <p>${total ? 2 : 0}</p>
                         </div>
                         <hr />
                         <div className="card-total-detail">
                             <b>Total</b>
-                            <b>${totalPrice ? 2 + totalPrice : 0}</b>
+                            <b>${total ? 2 + total : 0}</b>
                         </div>
-                        <button onClick={()=>{setTotal(totalPrice); navigate('/place-order')}}>PROCEED TO CHECK OUT</button>
+                        <button onClick={()=>{return navigate('/place-order')}}>PROCEED TO CHECK OUT</button>
                     </div>
                     <div className='cart-promocode'>
                         <div className='cart-promocode-contents'>

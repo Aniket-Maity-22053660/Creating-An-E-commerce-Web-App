@@ -25,14 +25,22 @@ const removeFromCart = async (req, res)=>{
     let userData = await userModel.findById(req.userId)
     let cartData = await userData.cartData
 
-if (cartData[req.body.itemId] > 0) {
-  // decrement by 1
+    if(!req.body.all){
+    if (cartData[req.body.itemId] > 0) {
+    // decrement by 1
     cartData[req.body.itemId] -= 1
     await userModel.findByIdAndUpdate(req.userId, {cartData})
-} else {
-  return res.json({ success: false, message: "Item not found!" });
-}
-
+    } else {
+    return res.json({ success: false, message: "Item not found!" });
+    }
+    }else{
+        if(cartData[req.body.itemId] > 0){
+            cartData[req.body.itemId] = 0
+            await userModel.findByIdAndUpdate(req.userId, {cartData})
+        }else{
+            return res.json({success:false, message:"Item not found!"})
+        }
+    }
     }catch(e){
         console.log(e)
         return res.json({success:false, message:"Error!"})

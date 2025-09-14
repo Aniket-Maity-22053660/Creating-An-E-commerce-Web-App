@@ -30,11 +30,16 @@ const StoreContextProvider = (props) => {
             console.log("Sorry! User not authenticated.")
         }
     }
-    const removeCartItems = async (itemId)=>{
+    const removeCartItems = async (itemId, all=false)=>{
+        if(!all){
         setCartItems((prev)=>({...prev, [itemId] : prev[itemId] - 1}))
+        }else{
+            emptyCartItems(itemId)
+        }
         if(token){
             try{
-            let response = await axios.post(url+'/cart/remove', {itemId}, {headers:{token}})
+            let response = await axios.post(url+'/cart/remove', {itemId, all}, {headers:{token}})
+            
             if(response.data.success){
                 console.log(response.data.message)
             }else{
@@ -72,6 +77,16 @@ const StoreContextProvider = (props) => {
     useEffect(()=>{
         console.log(cartItems)
     }, [cartItems])
+    
+    let totalPrice = 0
+    useEffect(()=>{
+        food_list.forEach((item)=>{
+            if(cartItems[item._id] > 0){
+                totalPrice += cartItems[item._id] * item.price
+            }
+        })
+        setTotal(totalPrice)
+    })
     const contextValue = {
         food_list, 
         cartItems, 
@@ -93,6 +108,7 @@ const StoreContextProvider = (props) => {
         }
         const response = await axios.get(`${url}/food/list`)
         setFoodList(response.data.data)
+        
     }
     loadData()
     }, [])

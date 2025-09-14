@@ -9,15 +9,15 @@ const SideBar = ()=>{
     return(
         <div className='sidebar'>
             <div className='sidebar-options'>
-                <NavLink to='/add' className={selected['add'] ? 'selected' : 'sidebar-option'} onClick={()=>setSelected((prev)=>(!prev['add'] ? {['list']:false,['order']:false, ['add'] : true} : {...prev, ['add'] : false}))}>
+                <NavLink to='/add' className={selected['add'] ? 'selected' : 'sidebar-option'} onClick={()=>{setSelected((prev)=>(!prev['add'] ? {['list']:false,['order']:false, ['add'] : true} : {...prev, ['add'] : false}))}}>
                     <img src={assets.add_icon} alt=''/>
                     <p>Add Items</p>
                 </NavLink>
-                <NavLink to='/list'className={selected['list'] ? 'selected' : 'sidebar-option'} onClick={()=>(setSelected((prev)=>(!prev['list'] ? {['order']:false,['add']:false, ['list'] : true} : {...prev, ['list']:false})))}>
+                <NavLink to='/list'className={selected['list'] ? 'selected' : 'sidebar-option'} onClick={()=>{setSelected((prev)=>(!prev['list'] ? {['order']:false,['add']:false, ['list'] : true} : {...prev, ['list']:false}))}}>
                     <img src={assets.order_icon} alt=''/>
                     <p>List Items</p>
                 </NavLink>
-                <NavLink to='/order'className={selected['order'] ? 'selected' : 'sidebar-option'} onClick={()=>(setSelected((prev)=>(!prev['order'] ? {['list']:false, ['add'] : false,['order'] : true} : {...prev, ['order']:false})))}>
+                <NavLink to='/order'className={selected['order'] ? 'selected' : 'sidebar-option'} onClick={()=>{setSelected((prev)=>(!prev['order'] ? {['list']:false, ['add'] : false,['order'] : true} : {...prev, ['order']:false}))}}>
                     <img src={assets.order_icon} alt=''/>
                     <p>Order Items</p>
                 </NavLink>
