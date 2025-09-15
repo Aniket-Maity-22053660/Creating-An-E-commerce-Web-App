@@ -8,6 +8,7 @@ import PlaceOrder from './pages/PlaceOrder/PlaceOrder.jsx'
 import VerifyPayment from './pages/Verify/Verify.jsx'
 import Footer from './components/footer/Footer.jsx'
 import LoginPopUp from './components/loginPopUp/LoginPopUp.jsx'
+import MyOrders from './pages/MyOrders/MyOrders.jsx'
 import {ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -36,6 +37,7 @@ const App = () => {
         <Route path='/cart' element = { <Cart /> }/>
         <Route path='/place-order' element = { <PlaceOrder /> }/>
         <Route path='/verify' element={<VerifyPayment />} />
+        <Route path='/my-orders' element={<MyOrders />} />
       </Routes>
     </div>
     <Footer />

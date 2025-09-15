@@ -10,6 +10,6 @@ const orderSchema = new mongoose.Schema({
     payment:{type:Boolean ,default:false}
 })
 
-const orderMeal = mongoose.models.order || mongoose.model("order", orderSchema)
+const orderModel = mongoose.models.order || mongoose.model("order", orderSchema)
 
-export default orderMeal
+export default orderModel

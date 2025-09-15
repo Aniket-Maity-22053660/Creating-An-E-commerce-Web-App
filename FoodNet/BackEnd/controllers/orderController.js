@@ -59,10 +59,10 @@ const verifyOrder = async (req, res)=>{
     console.log(req.body)
     try{
         if(success == "true"){
-            await orderModel.findByIdAndUpdate(orderId, {success:true})
+            await orderModel.findByIdAndUpdate(orderId, {payment:true})
             return res.json({success:true})
         }else{
-            await orderModel.findByIdAndDelete(orderId, {success:false})
+            await orderModel.findByIdAndDelete(orderId)
             return res.json({success:false})
         }
     }catch(e){
@@ -70,4 +70,17 @@ const verifyOrder = async (req, res)=>{
     }
 }
 
-export { placeOrder, verifyOrder }
+const userOrders = async (req, res)=>{
+    try{
+        const userId = req.userId
+        const orders = await orderModel.find({userId:userId})
+        return res.json({success:true, data:orders})
+
+    }catch(e){
+        console.log(e)
+        return res.json({success:false, message:"Error!"})
+    }
+
+}
+
+export { placeOrder, verifyOrder, userOrders }

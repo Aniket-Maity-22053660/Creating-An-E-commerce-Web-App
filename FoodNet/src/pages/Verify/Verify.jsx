@@ -18,19 +18,14 @@ const VerifyPayment = ()=>{
 
     const verify = async ()=>{
         try{
-        if(success){
+        
             const response = await axios.post(url+'/order/verify', {success, orderId})
             if(response.data.success){
-                setTimeout(()=>{navigate('/');toast.success("Payment Successful!")}, 7000)
-                
-                
+                setTimeout(()=>{navigate('/my-orders');toast.success("Payment Successful!")}, 7000)
             }else{
                 navigate('/place-order')
                 toast.error("Payment Failed!")
             }
-        }else{
-            navigate('/cart')
-        }
         }catch(e){
             console.log(e)
         }
