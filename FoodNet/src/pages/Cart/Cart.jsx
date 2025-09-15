@@ -14,6 +14,23 @@ const Cart = ()=>{
 
     const navigate = useNavigate()
 
+    const isCartEmpty = ()=>{
+        let q = 0
+        if(token){
+            food_list.map((item, index)=>{
+                if(cartItems[item._id] > 0){
+                    q += 1
+                }
+            })
+            if(!q){
+                return false
+            }else{
+                return true
+            }
+        }
+        return false
+    }
+
     return(
         <div className='cart'>
             <div className="cart-items">
@@ -71,7 +88,7 @@ const Cart = ()=>{
                             <b>Total</b>
                             <b>${total ? 2 + total : 0}</b>
                         </div>
-                        <button onClick={()=>{if(token && cartItems.length > 0){return navigate('/place-order')}else{if(cartItems.length == 0){toast.error("your cart is empty!")}else{toast.error("you are not logged in!")}}}}>PROCEED TO CHECK OUT</button>
+                        <button onClick={()=>{if(token && isCartEmpty()){return navigate('/place-order')}else{if(!token){return toast.error("you are not logged in!")}else{return toast.error("cart is empty!")}}}}>PROCEED TO CHECK OUT</button>
                     </div>
                     <div className='cart-promocode'>
                         <div className='cart-promocode-contents'>

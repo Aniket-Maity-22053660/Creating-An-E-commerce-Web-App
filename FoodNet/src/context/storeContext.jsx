@@ -113,7 +113,7 @@ const StoreContextProvider = (props) => {
     loadData()
     }, [])
     useEffect(()=>{
-        if(token){
+        if(1){
         loadCartItems(token)
         }
     }, [token])
