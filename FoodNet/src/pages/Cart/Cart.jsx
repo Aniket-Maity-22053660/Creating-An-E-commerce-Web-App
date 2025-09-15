@@ -3,6 +3,7 @@ import './Cart.css'
 import {StoreContext} from '../../context/storeContext.jsx'
 import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
+import {toast} from 'react-toastify'
 
 const Cart = ()=>{
     const {cartItems, food_list, removeCartItems, emptyCartItems, token, total, setTotal, url } = useContext(StoreContext)
@@ -70,7 +71,7 @@ const Cart = ()=>{
                             <b>Total</b>
                             <b>${total ? 2 + total : 0}</b>
                         </div>
-                        <button onClick={()=>{return navigate('/place-order')}}>PROCEED TO CHECK OUT</button>
+                        <button onClick={()=>{if(token && cartItems.length > 0){return navigate('/place-order')}else{if(cartItems.length == 0){toast.error("your cart is empty!")}else{toast.error("you are not logged in!")}}}}>PROCEED TO CHECK OUT</button>
                     </div>
                     <div className='cart-promocode'>
                         <div className='cart-promocode-contents'>
