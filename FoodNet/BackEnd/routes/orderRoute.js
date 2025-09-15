@@ -1,5 +1,5 @@
 import express from 'express'
-import { placeOrder, verifyOrder, userOrders, listUserOrders } from '../controllers/orderController.js'
+import { placeOrder, verifyOrder, userOrders, listUserOrders, statusUpdate } from '../controllers/orderController.js'
 import authMiddleware from "../middleware/authMiddleware.js"
 
 
@@ -12,5 +12,6 @@ orderRouter.get('/_ping', (req, res) => res.send('order router alive')); // <—
 console.log('orderRoute.js loaded');
 orderRouter.get('/user-orders', authMiddleware, userOrders)
 orderRouter.get('/list-user-orders', listUserOrders)
+orderRouter.post('/status-update', statusUpdate)
 
 export default orderRouter

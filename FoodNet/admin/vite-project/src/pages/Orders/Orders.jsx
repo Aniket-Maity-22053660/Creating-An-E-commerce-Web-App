@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react'
 import './Orders.css'
-
+import {toast} from 'react-toastify'
 import axios from 'axios'
 import { assets } from '../../assets/assets'
 
@@ -13,6 +13,17 @@ const Orders = ()=>{
         const response = await axios.get('http://localhost:4000/api'+'/order/list-user-orders');
         setOrders(response.data.data)
         console.log(response.data.data)
+    }
+
+    const statusHandler = async (e, orderId)=>{
+        const status = e.target.value
+        const response = await axios.post("http://localhost:4000/api/order/status-update", {orderId, status})
+        if(response.data.success){
+            toast.success(response.data.message)
+            fetchOrders()
+        }else{
+            toast.error(response.data.message)
+        }
     }
 
     useEffect(()=>{fetchOrders()}, [])
@@ -53,7 +64,7 @@ const Orders = ()=>{
                             </div>
                             <p>Items: {order.items.length}</p>
                             <p>${order.amount}</p>
-                            <select>
+                            <select value={order.status} onChange={(e)=>statusHandler(e, order._id)}>
                                 <option value="Food Processing">Food Processing</option>
                                 <option value="Out for delivery">Out for delivery</option>
                                 <option value="Delivered">Delivered</option>
