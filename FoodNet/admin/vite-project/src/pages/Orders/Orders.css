@@ -36,6 +36,11 @@
     }
     .order-item img{
         width:40px;
-        
+
     }
+}
+.order-list{
+    height:69vh;
+    overflow-y:auto;
+    margin-top:10px;
 }
