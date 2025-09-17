@@ -6,17 +6,18 @@ import foodRouter from "./routes/foodRoute.js"
 import userRouter from "./routes/userRoute.js"
 import cartRouter from './routes/cartRoute.js'
 import orderRouter from './routes/orderRoute.js'
-
+import morgan from 'morgan'
 //Configuring the app
 
 const app = express()
 const port = 4000
 
 // middleware
-
+app.use(morgan('dev'))
 app.use(express.json())
 app.use(cors())
 app.use('/image', express.static('uploads'))
+
 //Connecting DB
 
 connectDB()
